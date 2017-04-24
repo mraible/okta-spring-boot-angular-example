@@ -1,0 +1,17 @@
+<h1>
+  {{title}}
+</h1>
+
+<sp-authport></sp-authport>
+
+<div *ngIf="(user$ | async)" class="row text-center">
+  <h2>
+    Welcome, {{ ( user$ | async ).givenName }}!
+  </h2>
+  <ul class="nav nav-pills nav-stacked text-centered">
+    <li role="presentation" (click)="logout(); false"><a href="#">Logout</a></li>
+  </ul>
+</div>
+<div [hidden]="!(user$ | async)">
+  <beer-list></beer-list>
+</div>
